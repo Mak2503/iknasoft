@@ -13,14 +13,12 @@ const Sidebar: React.FC<SidebarProps> = ({
   position = "left",
   children,
 }) => {
-  // Disable scrolling on the body when the sidebar is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
     }
-    // Cleanup when component unmounts or isOpen changes
     return () => {
       document.body.style.overflow = "auto";
     };
@@ -45,7 +43,6 @@ const Sidebar: React.FC<SidebarProps> = ({
           onClick={onClose}
         ></div>
       )}
-
       <div
         className={`fixed top-0 ${sidebarPosition} h-full w-64 bg-white shadow-lg z-40 overflow-y-auto`}
         style={sidebarStyle}

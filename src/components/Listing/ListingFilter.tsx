@@ -12,6 +12,7 @@ import {
   propertyTypes,
 } from "../../utils/filter";
 import Checkbox from "../ui/Checkbox";
+import RadioButton from "../ui/Radio";
 
 const Accordion = ({
   title,
@@ -47,6 +48,7 @@ const ListingFilter = () => {
   const [markSeen, setMarkSeen] = useState(false);
   const [photoProp, setPhotoProp] = useState(false);
   const [dropdownList, setDropdownList] = useState<string[]>(filterNames);
+  const [completionStatus, setCompletionStatus] = useState("");
 
   const handleClick = (name: string) => {
     if (dropdownList.includes(name)) {
@@ -87,33 +89,18 @@ const ListingFilter = () => {
         open={dropdownList.includes(filterNames[0])}
         onClose={() => handleClick(filterNames[0])}
       >
-        <div className="flex flex-col gap-4 font-normal">
-          <label className="flex gap-4 items-center cursor-pointer">
-            <input
-              type="radio"
-              id="ready"
-              name={filterNames[0]}
-              className="hidden peer"
-            />
-            <div className="w-5 h-5 rounded-full border-2 border-gray-400 peer-checked:border-[#FF916E] transition-colors duration-300 flex items-center justify-center">
-              <div className="w-2.5 h-2.5 rounded-full bg-[#FF916E] scale-0 peer-checked:scale-100 transition-transform duration-300"></div>
-            </div>
-            <span>Ready</span>
-          </label>
-
-          <label className="flex gap-4 items-center cursor-pointer">
-            <input
-              type="radio"
-              id="offplan"
-              name={filterNames[0]}
-              className="hidden peer"
-            />
-            <div className="w-5 h-5 rounded-full border-2 border-gray-400 peer-checked:border-[#FF916E] transition-colors duration-300 flex items-center justify-center">
-              <div className="w-2.5 h-2.5 rounded-full bg-[#FF916E] scale-0 peer-checked:scale-100 transition-transform duration-300"></div>
-            </div>
-            <span>Off-Plan</span>
-          </label>
-        </div>
+        <RadioButton
+          name={filterNames[0]}
+          value="Ready"
+          checked={completionStatus === "Ready"}
+          onChange={() => setCompletionStatus("Ready")}
+        />
+        <RadioButton
+          name={filterNames[0]}
+          value="Off-Plan"
+          checked={completionStatus === "Off-Plan"}
+          onChange={() => setCompletionStatus("Off-Plan")}
+        />
       </Accordion>
       <Accordion
         title="Property Type"
@@ -122,10 +109,7 @@ const ListingFilter = () => {
       >
         <div className="flex flex-col gap-4 font-normal">
           {propertyTypes.map((type) => (
-            <label className="flex gap-4 items-center" key={type}>
-              <Checkbox />
-              <span>{type}</span>
-            </label>
+            <Checkbox label={type} key={type} />
           ))}
         </div>
       </Accordion>
@@ -136,10 +120,7 @@ const ListingFilter = () => {
       >
         <div className="flex flex-col gap-4 font-normal">
           {furnishedStatus.map((status) => (
-            <label className="flex gap-4 items-center" key={status}>
-              <Checkbox />
-              <span>{status}</span>
-            </label>
+            <Checkbox label={status} key={status} />
           ))}
         </div>
       </Accordion>
@@ -150,10 +131,7 @@ const ListingFilter = () => {
       >
         <div className="flex flex-col gap-4 font-normal">
           {amenities.map((amenity) => (
-            <label className="flex gap-4 items-center" key={amenity}>
-              <Checkbox />
-              <span>{amenity}</span>
-            </label>
+            <Checkbox label={amenity} key={amenity} />
           ))}
         </div>
       </Accordion>
@@ -164,10 +142,7 @@ const ListingFilter = () => {
       >
         <div className="flex flex-col gap-4 font-normal">
           {bhkFacilities.map((bhk) => (
-            <label className="flex gap-4 items-center" key={bhk}>
-              <Checkbox />
-              <span>{bhk}</span>
-            </label>
+            <Checkbox label={bhk} key={bhk} />
           ))}
         </div>
       </Accordion>
@@ -178,10 +153,7 @@ const ListingFilter = () => {
       >
         <div className="flex flex-col gap-4 font-normal">
           {bathrooms.map((room) => (
-            <label className="flex gap-4 items-center" key={room}>
-              <Checkbox />
-              <span>{room}</span>
-            </label>
+            <Checkbox label={room} key={room} />
           ))}
         </div>
       </Accordion>

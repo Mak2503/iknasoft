@@ -46,7 +46,7 @@ const CustomCheckbox: React.FC<CustomCheckboxProps> = ({ label, ...props }) => {
           </svg>
         )}
       </span>
-      {label && <span className="ml-2">{label}</span>}
+      {label && <span className="ml-4">{label}</span>}
     </label>
   );
 };
