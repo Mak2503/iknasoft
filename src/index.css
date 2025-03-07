@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
+
+:root {
+  width: 100%;
+  font-family: "Hind", Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-size: 15px;
+  color: #45525E;
+  font-weight: 500;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* .font-hind {
+  font-family: 'Hind', sans-serif;
+} */
