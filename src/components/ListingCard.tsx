@@ -11,15 +11,21 @@ import {
   BedroomIcon,
   WardrobeIcon,
   CarIcon,
-  LeftArrowIcon,
   TimerIcon,
   CheckCircleFillIcon,
+  CarouselIcon,
 } from "./icons/listing";
 import Button from "./ui/Button";
+import { LeftArrowIcon, RightArrowIcon } from "./icons/pagination";
 
 const SocialActionButtons = ({ isMobile = false }: { isMobile?: boolean }) => {
   return (
-    <div className={clsx(isMobile ? "flex lg:hidden" : "lg:flex hidden", "items-center gap-2")}>
+    <div
+      className={clsx(
+        isMobile ? "flex lg:hidden" : "lg:flex hidden",
+        "items-center gap-2"
+      )}
+    >
       <Button className="w-full bg-[#12B28C] hover:bg-[#119878] focus:bg-[#17A9ED] text-white uppercase flex justify-center items-center gap-2 text-xs">
         <WhatsappIcon />
         what's app
@@ -51,6 +57,19 @@ const ListingCard = () => {
           <div className="w-2/12 p-3.5 rounded-r-lg bg-[#FFD86E] flex justify-center">
             <HeadphoneIcon color="#474747" />
           </div>
+        </div>
+        <div className="absolute left-5 top-1/2">
+          <div className="bg-[#00000061] py-4 px-5 rounded-lg">
+            <LeftArrowIcon color="white" aria-hidden="true" />
+          </div>
+        </div>
+        <div className="absolute right-5 top-1/2">
+          <div className="bg-[#00000061] py-4 px-5 rounded-lg">
+            <RightArrowIcon color="white" aria-hidden="true" />
+          </div>
+        </div>
+        <div className="absolute bottom-6 w-full flex justify-center">
+          <CarouselIcon />
         </div>
       </div>
       <div className="lg:w-3/5 p-3 w-full">
@@ -94,7 +113,9 @@ const ListingCard = () => {
               </div>
             </div>
             <div className="lg:flex hidden gap-2 items-center text-[#12B2AF] font-semibold">
-              <AreaExpandIcon />
+              <div className="p-0.5 bg-[#12B2AF] rounded-lg">
+                <AreaExpandIcon />
+              </div>
               1500.00 square ft
             </div>
           </div>
@@ -115,7 +136,9 @@ const ListingCard = () => {
           </div>
           {/* Mobile Only */}
           <div className="flex lg:hidden gap-2 items-center text-[#12B2AF] font-semibold">
-            <AreaExpandIcon />
+            <div className="p-0.5 bg-[#12B2AF] rounded-lg">
+              <AreaExpandIcon />
+            </div>
             1500.00 square ft
           </div>
           {/* Mobile Only */}
